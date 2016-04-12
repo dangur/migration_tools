@@ -208,4 +208,43 @@ class CheckFor {
     }
     return TRUE;
   }
+
+  /**
+   * Check file for redirects.
+   *
+   * @param object $row
+   *   A row object as delivered by migrate.
+   *
+   * @return bool
+   *   TRUE - destination URI(s).
+   *   FALSE - no detectable redirects exist in the page.
+   */
+  public static function hasHtmlRedirect($row) {
+    $redirect = $row->sourceParser->queryPath->find('META')->attr('url');
+
+    // Checks if empty.
+    if (!empty($redirect)) {
+      return $redirect;
+    }
+
+    //Checks for meta refresh redirects. Does meta support relative urls???
+    if ($base == ) {
+      print_r($base);
+    }
+    // Checks for Javascript redirects. <script type="text/javascript">
+
+    // Checks for window location JS redirects. window.location.href
+
+      // Checks for location JS redirects. location
+
+      // Checks for location href JS redirects. location.href
+
+      // Checks for location assign JS redirects. location.assign
+
+      // Checks for location replace JS redirects. location.replace
+
+    // Checks for human readable text redirects.
+
+      // Checks for 'this page has moved to'
+  }
 }
